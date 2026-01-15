@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const numeroWhatsApp = "558182362638";
+        const numeroWhatsApp = "5515996822022";
         const itensPedido = carrinho
             .map((item) => `  - ${item.quantidade}x ${item.nome}`)
             .join("\n");
