@@ -368,13 +368,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     categoryBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-            // Remove classe active de todos os botões
             categoryBtns.forEach((b) => b.classList.remove("active"));
-            // Adiciona classe active no botão clicado
             btn.classList.add("active");
-            // Atualiza categoria ativa
             categoriaAtiva = btn.dataset.category;
-            // Filtra e mostra produtos
             filtrarEMostrarProdutos();
         });
     });
