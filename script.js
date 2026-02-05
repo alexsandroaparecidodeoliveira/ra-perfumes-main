@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- SELETORES GLOBAIS ---
     const cartIcon = document.querySelector(".cart-icon"),
         cartSidebar = document.querySelector(".cart-sidebar"),
         cartOverlay = document.querySelector(".cart-overlay"),
@@ -18,16 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
         discountLineElem = document.querySelector(".discount-line"),
         totalElem = document.getElementById("cart-total");
     const finishOrderBtn = document.getElementById("finish-order-btn");
-    // Seletores da barra inferior
+ 
     const viewCartBanner = document.querySelector(".view-cart-banner");
     const bannerTotalElem = document.getElementById("banner-total");
     const viewCartBannerBtn = document.querySelector(".view-cart-banner-btn");
 
-    // Seletores para o sistema de filtro
     const categoryBtns = document.querySelectorAll(".category-btn");
     const searchInput = document.querySelector(".search-input");
 
-    // --- ESTADO DA APLICAÇÃO ---
     const produtos = [
         {
             id: 1,
@@ -98,8 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let carrinho = [],
         tipoEntrega = "delivery",
         appliedCoupon = null;
-
-    // Variáveis de estado para filtros
+ 
     let categoriaAtiva = "all";
     let termoBusca = "";
 
@@ -148,18 +144,15 @@ document.addEventListener("DOMContentLoaded", () => {
         flyingImg.addEventListener("transitionend", () => flyingImg.remove());
     };
 
-    // Função para filtrar e mostrar produtos
     const filtrarEMostrarProdutos = () => {
         let produtosFiltrados = produtos;
 
-        // Filtro por categoria
         if (categoriaAtiva !== "all") {
             produtosFiltrados = produtosFiltrados.filter(
                 (produto) => produto.categoria === categoriaAtiva,
             );
         }
 
-        // Filtro por busca
         if (termoBusca.trim() !== "") {
             const termo = termoBusca.toLowerCase();
             produtosFiltrados = produtosFiltrados.filter(
@@ -169,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         }
 
-        // Renderizar produtos filtrados
         const container = document.querySelector(".products-container");
         if (produtosFiltrados.length === 0) {
             container.innerHTML = `
@@ -367,7 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.open(url, "_blank");
     };
 
-    // --- EVENT LISTENERS ---
     cartIcon.addEventListener("click", abrirCarrinho);
     closeCartBtn.addEventListener("click", fecharCarrinho);
     cartOverlay.addEventListener("click", fecharCarrinho);
@@ -375,7 +366,6 @@ document.addEventListener("DOMContentLoaded", () => {
     finishOrderBtn.addEventListener("click", finalizarPedido);
     viewCartBannerBtn.addEventListener("click", abrirCarrinho);
 
-    // Event listener para botões de categoria
     categoryBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             // Remove classe active de todos os botões
@@ -389,7 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Event listener para campo de busca
     searchInput.addEventListener("input", (e) => {
         termoBusca = e.target.value;
         filtrarEMostrarProdutos();
@@ -445,7 +434,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Remove o erro ao digitar
     document
         .querySelectorAll(
             "#delivery-form-container input[required], #pickup-form-container input[required], #pickup-form-container select[required]",
@@ -456,7 +444,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-    // --- INICIALIZAÇÃO ---
     filtrarEMostrarProdutos();
     atualizarCarrinho();
 });
