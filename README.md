@@ -1,7 +1,7 @@
 
 # Perfumes
 
-Automatiza vendas faz pedidos direto para o whatsapp.
+Adiciona ao carrinho e faz pedidos direto para o whatsapp.
 
 ## 🚀 Tecnologias
 - HTML
